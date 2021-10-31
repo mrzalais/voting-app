@@ -21,6 +21,7 @@
         "tailwindcss": "^2.2.19"
     },
     "dependencies": {
+        "@tailwindcss/line-clamp": "^0.2.2",
         "latest": "^0.2.0",
         "n": "^8.0.0",
         "stable": "^0.1.8"
