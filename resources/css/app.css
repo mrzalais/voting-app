@@ -2,6 +2,10 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+[x-cloak] {
+    display: none !important;
+}
+
 /* Vertical line to the left of the comments */
 
 .comments-container::before {
@@ -57,5 +61,4 @@
     background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(266deg, #21c8f6 98%, #637bff -52%);
     background-origin: border-box;
     background-clip: content-box, border-box;
-    border-color: transparent;
 }

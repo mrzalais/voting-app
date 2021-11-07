@@ -25879,6 +25879,10 @@ select {
   -webkit-line-clamp: unset;
 }
 
+[x-cloak] {
+  display: none !important;
+}
+
 /* Vertical line to the left of the comments */
 
 .comments-container::before {
@@ -25934,7 +25938,6 @@ select {
   background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(266deg, #21c8f6 98%, #637bff -52%);
   background-origin: border-box;
   background-clip: content-box, border-box;
-  border-color: transparent;
 }
 
 @media (min-width: 640px) {
