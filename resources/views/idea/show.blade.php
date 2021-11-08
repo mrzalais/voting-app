@@ -19,27 +19,19 @@
             </div>
             <div class="w-full mx-2 md:mx-4">
                 <h4 class="text-xl font-semibold">
-                    <a href="#" class="hover:underline">A random title can go here</a>
+                    <a href="#" class="hover:underline">{{ $idea->title }}</a>
                 </h4>
                 <div class="text-gray-600 mt-3 transition duration-150">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur fugiat
-                     in rerum tempore natus sint cum sapiente. Facere aliquid illo ducimus optio
-                      aperiam neque, dolorem iste! Perspiciatis officiis sunt molestias est 
-                      similique? Fuga aspernatur delectus facilis ipsa dignissimos, et numquam 
-                      cupiditate animi laboriosam iusto perspiciatis! Delectus repellendus 
-                      oloribus commodi nesciunt officiis neque aliquam! Vero eos tenetur dolor 
-                      deserunt ipsam quidem! Voluptatem fugiat maiores tempore, deserunt ea 
-                      cupiditate ex fugit! Officiis, minima! Tenetur sunt voluptatibus quas 
-                      expedita vel consectetur delectus, fugit eius autem sint minima vitae, 
-                      pariatur vero, obcaecati eum placeat optio officiis? Aut officiis 
-                      voluptatem deserunt excepturi, vel odit magnam.
+                    {{ $idea->description }}
                 </div>
                 <div class="flex flex-col md:flex-row md:items-center justify-between mt-6">
                     <div class="flex items-center text-xs text-gray-400 font-semibold 
                     space-x-2">
-                        <div class="hidden md:block font-bold text-gray-900">John Doe</div>
+                        <div class="hidden md:block font-bold text-gray-900">
+                            {{ $idea->user->name }}
+                        </div>
                         <div hidden md:block>&bull;</div>
-                        <div>10 hours ago</div>
+                        <div>{{ $idea->created_at->diffForHumans() }}</div>
                         <div>&bull;</div>
                         <div>Category 1</div>
                         <div>&bull;</div>
