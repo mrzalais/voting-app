@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\Idea;
+use App\Models\Status;
 use App\Models\Category;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -18,15 +19,20 @@ class ShowIdeasTest extends TestCase
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
+        $statusOpen = Status::factory()->create(['name' => 'Open', 'class' => 'bg-gray-200']);
+        $statusConsidering = Status::factory()->create(['name' => 'Considering', 'class' => 'bg-purple text-white']);
+
         $ideaOne = Idea::factory()->create([
             'title' => 'My First Idea',
             'category_id' => $categoryOne->id,
+            'status_id' => $statusOpen->id,
             'description' => 'Description of my first idea',
         ]);
 
         $ideaTwo = Idea::factory()->create([
             'title' => 'My Second Idea',
             'category_id' => $categoryTwo->id,
+            'status_id' => $statusConsidering->id,
             'description' => 'Description of my Second idea',
         ]);
 
@@ -39,17 +45,19 @@ class ShowIdeasTest extends TestCase
         $response->assertSee($ideaTwo->title);
         $response->assertSee($ideaTwo->description);
         $response->assertSee($categoryTwo->name);
-
     }
 
     /** @test */
     public function single_idea_shows_correctly_on_the_show_page()
     {
         $category = Category::factory()->create(['name' => 'Category 1']);
+        $status = Status::factory()->create(['name' => 'Open', 'class' => 'bg-gray-200']);
+
 
         $idea = Idea::factory()->create([
             'title' => 'My First Idea',
             'category_id' => $category->id,
+            'status_id' => $status->id,
             'description' => 'Description of my first idea',
         ]);
 
@@ -65,8 +73,11 @@ class ShowIdeasTest extends TestCase
     public function ideas_pagination_works()
     {
         $category = Category::factory()->create(['name' => 'Category 1']);
+        $status = Status::factory()->create(['name' => 'Open', 'class' => 'bg-gray-200']);
+
         Idea::factory(Idea::PAGINATION_COUNT + 1)->create([
             'category_id' => $category->id,
+            'status_id' => $status->id,
         ]);
 
         $ideaOnFirstPage = Idea::find(1);
@@ -91,16 +102,20 @@ class ShowIdeasTest extends TestCase
     public function same_idea_title_different_slugs()
     {
         $category = Category::factory()->create(['name' => 'Category 1']);
+        $status = Status::factory()->create(['name' => 'Open', 'class' => 'bg-gray-200']);
 
         $ideaOne = Idea::factory()->create([
             'title' => 'My First Idea',
             'category_id' => $category->id,
+            'status_id' => $status->id,
             'description' => 'Description of my first idea',
         ]);
 
         $ideaTwo = Idea::factory()->create([
             'title' => 'My First Idea',
             'category_id' => $category->id,
+            'status_id' => $status->id,
+
             'description' => 'Another Description of my first idea',
         ]);
 
