@@ -89,13 +89,13 @@ class ShowIdeasTest extends TestCase
 
         $response = $this->get('/');
 
-        $response->assertSee($ideaOnFirstPage->title);
-        $response->assertDontSee($ideaOnSecondPage->title);
+        $response->assertSee($ideaOnSecondPage->title);
+        $response->assertDontSee($ideaOnFirstPage->title);
 
         $response = $this->get('/?page=2');
 
-        $response->assertDontSee($ideaOnFirstPage->title);
-        $response->assertSee($ideaOnSecondPage->title);
+        $response->assertSee($ideaOnFirstPage->title);
+        $response->assertDontSee($ideaOnSecondPage->title);
     }
 
     /** @test */
