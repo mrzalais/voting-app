@@ -15,7 +15,7 @@ class CreateIdea extends Component
 
     protected $rules = [
         'title' => 'required|min:4',
-        'category' => 'required|exists:categories',
+        'category' => 'required|exists:categories,id',
         'description' => 'required|min:4',
     ];
 
