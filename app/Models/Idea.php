@@ -48,9 +48,19 @@ class Idea extends Model
         if (!$user) {
             return false;
         }
-        
+
         return Vote::where('user_id', $user->id)
             ->where('idea_id', $this->id)
             ->exists();
+    }
+
+    public function vote(User $user)
+    {
+        $this->votes()->attach($user);
+    }
+
+    public function removeVote(User $user)
+    {
+        $this->votes()->detach($user);
     }
 }
