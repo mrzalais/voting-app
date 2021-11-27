@@ -15,6 +15,7 @@ class StatusFactory extends Factory
     {
         return [
             'name' => $this->faker->words(2, true),
+            'class' => 'bg-gray-200',
         ];
     }
 }
