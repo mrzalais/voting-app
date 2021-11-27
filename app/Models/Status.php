@@ -14,7 +14,7 @@ class Status extends Model
         return $this->hasMany(Idea::class);
     }
 
-    public function getCount()
+    public static function getCount()
     {
         return Idea::query()
             ->selectRaw('count(*) as all_statuses')
