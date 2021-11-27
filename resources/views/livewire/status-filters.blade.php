@@ -7,7 +7,7 @@
                 class="transition duration-150 ease-in
                      border-b-4 pb-3 hover:border-blue @if ($status === 'Considering') border-blue text-gray-900 @endif">Considering
                 ({{ $statusCount['considering'] }})</a></li>
-        <li><a wire:click.prevent="setStatus('In progress')" href="#"
+        <li><a wire:click.prevent="setStatus('In Progress')" href="#"
                 class="transition duration-150 ease-in
                         border-b-4 pb-3 hover:border-blue @if ($status === 'In progress') border-blue text-gray-900 @endif">In
                 progress ({{ $statusCount['in_progress'] }})</a></li>
