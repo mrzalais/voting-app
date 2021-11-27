@@ -50,6 +50,9 @@ class IdeaController extends Controller
         return view('idea.show', [
             'idea' => $idea,
             'voteCount' => $idea->votes()->count(),
+            'backUrl' => url()->previous() !== url()->full()
+                ? url()->previous()
+                : route('idea.index'),
         ]);
     }
 
