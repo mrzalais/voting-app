@@ -2,15 +2,16 @@
 
 namespace Tests\Feature;
 
-use App\Http\Livewire\StatusFilters;
 use Tests\TestCase;
 use App\Models\Idea;
 use App\Models\User;
 use App\Models\Status;
+use Livewire\Livewire;
 use App\Models\Category;
+use App\Http\Livewire\IdeasIndex;
+use App\Http\Livewire\StatusFilters;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Livewire\Livewire;
 
 class StatusFiltersTest extends TestCase
 {
@@ -105,13 +106,13 @@ class StatusFiltersTest extends TestCase
             Idea::factory()->for($user)->for($category)->forStatus(['name' => $status])->count($count)->create();
         };
 
-        $response = $this->get(route('idea.index'));
-        $response->assertSuccessful()
-            ->assertDontSee('test-implemented')
-            ->assertDontSee('test-in-progress')
-            ->assertSee('test-open')
-            ->assertSee('test-considering')
-            ->assertSee('test-closed');
+        Livewire::withQueryParams(['status' => 'Considering'])
+        ->test(IdeasIndex::class)
+        ->assertViewHas('ideas', function ($ideas) {
+            return $ideas->count() === 1
+                && $ideas->first()->category->name === 'Category 1'
+                && $ideas->first()->status->name === 'Considering';
+        });
     }
 
     /** @test */
