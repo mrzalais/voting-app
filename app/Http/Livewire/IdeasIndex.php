@@ -16,6 +16,7 @@ class IdeasIndex extends Component
     public string $status = 'All';
     public string $category = 'All Categories';
     public string $filter = 'No Filter';
+    public string $search = '';
 
     protected $queryString = [
         'status',
@@ -36,6 +37,11 @@ class IdeasIndex extends Component
     }
 
     public function updatingFilter()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingSearch()
     {
         $this->resetPage();
     }
@@ -73,6 +79,9 @@ class IdeasIndex extends Component
                 })
                 ->when($this->filter && $this->filter === 'My Ideas', function ($query) {
                     return $query->where('user_id', auth()->id());
+                })
+                ->when(strlen($this->search) >= 4, function ($query) {
+                    return $query->where('title', 'like', '%'.$this->search.'%');
                 })
                 
                 ->addSelect([
