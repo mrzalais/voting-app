@@ -66,7 +66,7 @@
             </div>
 
             <div>
-                <textarea name="upadte_comment" id="update_comments" cols="30" rows="3"
+                <textarea name="update_comment" id="update_comments" cols="30" rows="3"
                     class="w-full text-sm bg-gray-100 rounded-xl placeholder-gray-900
                 border-none px-4 py-2"
                     placeholder="Add an update comment (optional)"></textarea>
@@ -90,16 +90,16 @@
                     class="flex items-center justify-center w-1/2
                 h-11 text-xs bg-blue font-semibold rounded-xl border border-blue
                 text-white hover:bg-blue-hover transition duration-150
-                ease-in px-6 py-3">
+                ease-in px-6 py-3 disabled:opacity-50">
                     <span class="ml-1">Update</span>
                 </button>
             </div>
 
             <div>
                 <label class="font-normal inline-flex items-center">
-                    <input type="checkbox" name="notify_voters" class="rounded
-                    bg-gray-200"
-                        checked="">
+                    <input wire:model="notifyAllVoters" type="checkbox" name="notify_voters"
+                        class="rounded
+                    bg-gray-200">
                     <span class="ml-2">Notify all voters</span>
                 </label>
             </div>
