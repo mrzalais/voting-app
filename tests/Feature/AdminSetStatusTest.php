@@ -22,9 +22,7 @@ class AdminSetStatusTest extends TestCase
         /** @var \Illuminate\Contracts\Auth\Authenticatable $admin */
         $admin = User::factory()->admin()->create();
 
-        $idea = Idea::factory()->create([
-            'user_id' => $admin->id,
-        ]);
+        $idea = Idea::factory()->create();
 
         $this->actingAs($admin)
             ->get(route('idea.show', $idea))
@@ -37,9 +35,7 @@ class AdminSetStatusTest extends TestCase
         /** @var \Illuminate\Contracts\Auth\Authenticatable $nonAdmin */
         $nonAdmin = User::factory()->create();
 
-        $idea = Idea::factory()->create([
-            'user_id' => $nonAdmin->id,
-        ]);
+        $idea = Idea::factory()->create();
 
         $this->actingAs($nonAdmin)
             ->get(route('idea.show', $idea))
@@ -55,7 +51,6 @@ class AdminSetStatusTest extends TestCase
         $status = Status::factory()->create();
 
         $idea = Idea::factory()->create([
-            'user_id' => $admin->id,
             'status_id' => $status->id,
         ]);
 
@@ -76,7 +71,6 @@ class AdminSetStatusTest extends TestCase
         $statusConsidering = Status::factory()->create(['name' => 'Considering', 'class' => 'bg-gray-200']);
 
         $idea = Idea::factory()->create([
-            'user_id' => $admin->id,
             'status_id' => $statusOpen->id,
         ]);
 
@@ -104,7 +98,6 @@ class AdminSetStatusTest extends TestCase
         $statusConsidering = Status::factory()->create(['name' => 'Considering', 'class' => 'bg-gray-200']);
 
         $idea = Idea::factory()->create([
-            'user_id' => $admin->id,
             'status_id' => $statusOpen->id,
         ]);
 

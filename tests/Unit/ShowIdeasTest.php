@@ -16,8 +16,6 @@ class ShowIdeasTest extends TestCase
     /** @test */
     public function list_of_ideas_shows_on_main_page()
     {
-        $user = User::factory()->create();
-
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
@@ -25,7 +23,6 @@ class ShowIdeasTest extends TestCase
         $statusConsidering = Status::factory()->create(['name' => 'ConsideringUnique']);
 
         $ideaOne = Idea::factory()->create([
-            'user_id' => $user->id,
             'title' => 'My First Idea',
             'category_id' => $categoryOne->id,
             'status_id' => $statusOpen->id,
@@ -33,7 +30,6 @@ class ShowIdeasTest extends TestCase
         ]);
 
         $ideaTwo = Idea::factory()->create([
-            'user_id' => $user->id,
             'title' => 'My Second Idea',
             'category_id' => $categoryTwo->id,
             'status_id' => $statusConsidering->id,
@@ -56,13 +52,10 @@ class ShowIdeasTest extends TestCase
     /** @test */
     public function single_idea_shows_correctly_on_the_show_page()
     {
-        $user = User::factory()->create();
-
         $category = Category::factory()->create(['name' => 'Category 1']);
         $status = Status::factory()->create(['name' => 'OpenUnique']);
 
         $idea = Idea::factory()->create([
-            'user_id' => $user->id,
             'title' => 'My First Idea',
             'category_id' => $category->id,
             'status_id' => $status->id,
@@ -81,16 +74,7 @@ class ShowIdeasTest extends TestCase
     /** @test */
     public function ideas_pagination_works()
     {
-        $user = User::factory()->create();
-
-        $category = Category::factory()->create(['name' => 'Category 1']);
-        $status = Status::factory()->create(['name' => 'Open', 'class' => 'bg-gray-200']);
-
-        Idea::factory(Idea::PAGINATION_COUNT + 1)->create([
-            'user_id' => $user->id,
-            'category_id' => $category->id,
-            'status_id' => $status->id,
-        ]);
+        Idea::factory(Idea::PAGINATION_COUNT + 1)->create();
 
         $ideaOnFirstPage = Idea::find(1);
         $ideaOnFirstPage->title = 'My Idea On First Page';
@@ -113,24 +97,13 @@ class ShowIdeasTest extends TestCase
     /** @test */
     public function same_idea_title_different_slugs()
     {
-        $user = User::factory()->create();
-
-        $category = Category::factory()->create(['name' => 'Category 1']);
-        $status = Status::factory()->create(['name' => 'Open', 'class' => 'bg-gray-200']);
-
         $ideaOne = Idea::factory()->create([
-            'user_id' => $user->id,
             'title' => 'My First Idea',
-            'category_id' => $category->id,
-            'status_id' => $status->id,
             'description' => 'Description of my first idea',
         ]);
 
         $ideaTwo = Idea::factory()->create([
-            'user_id' => $user->id,
             'title' => 'My First Idea',
-            'category_id' => $category->id,
-            'status_id' => $status->id,
 
             'description' => 'Another Description of my first idea',
         ]);
@@ -149,19 +122,7 @@ class ShowIdeasTest extends TestCase
     /** @test */
     public function in_app_back_button_works_when_index_page_visited_first()
     {
-        $user = User::factory()->create();
-
-        $category = Category::factory()->create(['name' => 'Category 2']);
-
-        $status = Status::factory()->create(['name' => 'Considering', 'class' => 'bg-purple text-white']);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'title' => 'My First Idea',
-            'category_id' => $category->id,
-            'status_id' => $status->id,
-            'description' => 'Description of my first idea',
-        ]);
+        $idea = Idea::factory()->create();
 
         $response = $this->get('/?category=Category%202&status=Considering');
         $response = $this->get(route('idea.show', $idea));
@@ -172,19 +133,7 @@ class ShowIdeasTest extends TestCase
     /** @test */
     public function in_app_back_button_works_when_show_page_only_page_visited_first()
     {
-        $user = User::factory()->create();
-
-        $category = Category::factory()->create(['name' => 'Category 2']);
-
-        $status = Status::factory()->create(['name' => 'Considering', 'class' => 'bg-purple text-white']);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'title' => 'My First Idea',
-            'category_id' => $category->id,
-            'status_id' => $status->id,
-            'description' => 'Description of my first idea',
-        ]);
+        $idea = Idea::factory()->create();
 
         $response = $this->get(route('idea.show', $idea));
 

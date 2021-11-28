@@ -16,10 +16,6 @@ class StatusTest extends TestCase
     /** @test */
     public function can_get_count_of_each_status()
     {
-        $user = User::factory()->create();
-
-        $category = Category::factory()->create(['name' => 'Category 1']);
-
         $statuses = [
             'Open' => 15,
             'Considering' => 10,
@@ -30,7 +26,13 @@ class StatusTest extends TestCase
 
         $totalCount = 0;
         foreach ($statuses as $status => $count) {
-            Idea::factory()->for($user)->for($category)->forStatus(['name' => $status])->count($count)->create();
+            Idea::factory()
+                ->for(User::factory()->create())
+                ->for(Category::factory()->create())
+                ->forStatus(['name' => $status])
+                ->count($count)
+                ->create();
+
             $totalCount += $count;
         };
         $this->assertEquals($totalCount, Status::getCount()['all_statuses']);

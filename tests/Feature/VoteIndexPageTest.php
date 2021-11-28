@@ -67,9 +67,7 @@ class VoteIndexPageTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-        ]);
+        $idea = Idea::factory()->create();
 
         Vote::factory()->create([
             'idea_id' => $idea->id,

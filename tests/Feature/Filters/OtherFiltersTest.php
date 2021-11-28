@@ -22,13 +22,9 @@ class OtherFiltersTest extends TestCase
         $userB = User::factory()->create();
         $userC = User::factory()->create();
 
-        $ideaOne = Idea::factory()->create([
-            'user_id' => $userA->id,
-        ]);
+        $ideaOne = Idea::factory()->create();
 
-        $ideaTwo = Idea::factory()->create([
-            'user_id' => $userB->id,
-        ]);
+        $ideaTwo = Idea::factory()->create();
 
         Vote::factory()->create([
             'idea_id' => $ideaOne->id,
@@ -135,20 +131,15 @@ class OtherFiltersTest extends TestCase
     /** @test */
     public function no_filters_works_correctly()
     {
-        $user = User::factory()->create();
-
         Idea::factory()->create([
-            'user_id' => $user->id,
             'title' => 'First Idea',
         ]);
 
         Idea::factory()->create([
-            'user_id' => $user->id,
             'title' => 'Second Idea',
         ]);
 
         Idea::factory()->create([
-            'user_id' => $user->id,
             'title' => 'Third Idea',
         ]);
 

@@ -6,9 +6,7 @@ use Tests\TestCase;
 use App\Models\Idea;
 use App\Models\User;
 use App\Models\Vote;
-use App\Models\Status;
 use Livewire\Livewire;
-use App\Models\Category;
 use App\Http\Livewire\IdeaShow;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

@@ -28,19 +28,7 @@ class NotifyAllVotersTest extends TestCase
             'email' => 'user@user.com',
         ]);
         
-        $userB = User::factory()->create();
-
-        $category = Category::factory()->create(['name' => 'Category 1']);
-
-        $status = Status::factory()->create(['name' => 'Open', 'class' => 'bg-gray-200']);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $admin->id,
-            'title' => 'My First Idea',
-            'category_id' => $category->id,
-            'status_id' => $status->id,
-            'description' => 'Description of my first idea',
-        ]);
+        $idea = Idea::factory()->create();
 
         Vote::factory()->create([
             'idea_id' => $idea->id,
