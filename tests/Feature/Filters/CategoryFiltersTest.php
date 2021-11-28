@@ -52,19 +52,19 @@ class CategoryFiltersTest extends TestCase
 
         $status = Status::factory()->create(['id' => 4, 'name' => 'Open']);
 
-        $ideaOne = Idea::factory()->create([
+        Idea::factory()->create([
             'user_id' => $user->id,
             'category_id' => $categoryOne->id,
             'status_id' => $status->id,
         ]);
 
-        $ideaTwo = Idea::factory()->create([
+        Idea::factory()->create([
             'user_id' => $user->id,
             'category_id' => $categoryOne->id,
             'status_id' => $status->id,
         ]);
 
-        $ideaThree = Idea::factory()->create([
+        Idea::factory()->create([
             'user_id' => $user->id,
             'category_id' => $categoryTwo->id,
             'status_id' => $status->id,

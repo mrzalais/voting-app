@@ -10,7 +10,6 @@ use Livewire\Livewire;
 use App\Models\Category;
 use App\Http\Livewire\IdeasIndex;
 use App\Http\Livewire\StatusFilters;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class StatusFiltersTest extends TestCase
@@ -20,20 +19,6 @@ class StatusFiltersTest extends TestCase
     /** @test */
     public function index_page_contains_status_filters_livewire_component()
     {
-        $user = User::factory()->create();
-
-        $category = Category::factory()->create(['name' => 'Category 1']);
-
-        $status = Status::factory()->create(['name' => 'Open', 'class' => 'bg-gray-200']);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'title' => 'My First Idea',
-            'category_id' => $category->id,
-            'status_id' => $status->id,
-            'description' => 'Description of my first idea',
-        ]);
-
         $this->get(route('idea.index'))
             ->assertSeeLivewire('status-filters');
     }
@@ -41,19 +26,7 @@ class StatusFiltersTest extends TestCase
     /** @test */
     public function show_page_contains_status_filters_livewire_component()
     {
-        $user = User::factory()->create();
-
-        $category = Category::factory()->create(['name' => 'Category 1']);
-
-        $status = Status::factory()->create(['name' => 'Open', 'class' => 'bg-gray-200']);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'title' => 'My First Idea',
-            'category_id' => $category->id,
-            'status_id' => $status->id,
-            'description' => 'Description of my first idea',
-        ]);
+        $idea = Idea::factory()->create();
 
         $this->get(route('idea.show', $idea))
             ->assertSeeLivewire('status-filters');
@@ -62,26 +35,14 @@ class StatusFiltersTest extends TestCase
     /** @test */
     public function shows_correct_status_count()
     {
-        $user = User::factory()->create();
-
-        $category = Category::factory()->create(['name' => 'Category 1']);
-
         $status = Status::factory()->create(['id' => 4, 'name' => 'Implemented']);
 
         Idea::factory()->create([
-            'user_id' => $user->id,
-            'title' => 'My First Idea',
-            'category_id' => $category->id,
             'status_id' => $status->id,
-            'description' => 'Description of my first idea',
         ]);
 
         Idea::factory()->create([
-            'user_id' => $user->id,
-            'title' => 'My First Idea',
-            'category_id' => $category->id,
             'status_id' => $status->id,
-            'description' => 'Description of my first idea',
         ]);
 
         Livewire::test(StatusFilters::class)
@@ -116,43 +77,17 @@ class StatusFiltersTest extends TestCase
     }
 
     /** @test */
-    public function show_page_does_not_show_selected_status()
+    public function show_page_does_not_show_selected_status_border_in_header()
     {
-        $user = User::factory()->create();
-
-        $category = Category::factory()->create(['name' => 'Category 1']);
-
-        $status = Status::factory()->create(['id' => 4, 'name' => 'Implemented']);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'title' => 'My First Idea',
-            'category_id' => $category->id,
-            'status_id' => $status->id,
-            'description' => 'Description of my first idea',
-        ]);
+        $idea = Idea::factory()->create();
 
         $response = $this->get(route('idea.show', $idea));
         $response->assertDontSee('border-blue text-gray-900');
     }
 
     /** @test */
-    public function index_page_shows_selected_status()
+    public function index_page_shows_selected_status_border_in_header()
     {
-        $user = User::factory()->create();
-
-        $category = Category::factory()->create(['name' => 'Category 1']);
-
-        $status = Status::factory()->create(['id' => 4, 'name' => 'Implemented']);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'title' => 'My First Idea',
-            'category_id' => $category->id,
-            'status_id' => $status->id,
-            'description' => 'Description of my first idea',
-        ]);
-
         $response = $this->get(route('idea.index'));
         $response->assertSee('border-blue text-gray-900');
     }
