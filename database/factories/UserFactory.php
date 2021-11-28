@@ -36,4 +36,14 @@ class UserFactory extends Factory
             ];
         });
     }
+
+    public function admin()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'itsdigiutime@gmail.com',
+                'jon@doe.com',
+            ];
+        });
+    }
 }

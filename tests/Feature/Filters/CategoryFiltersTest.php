@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Filters;
 
 use App\Http\Livewire\IdeasIndex;
 use Tests\TestCase;
@@ -19,29 +19,19 @@ class CategoryFiltersTest extends TestCase
     /** @test */
     public function selecting_a_category_filters_correctly()
     {
-        $user = User::factory()->create();
-
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
-        $status = Status::factory()->create(['name' => 'Open']);
-
         Idea::factory()->create([
-            'user_id' => $user->id,
             'category_id' => $categoryOne->id,
-            'status_id' => $status->id,
         ]);
 
         Idea::factory()->create([
-            'user_id' => $user->id,
             'category_id' => $categoryOne->id,
-            'status_id' => $status->id,
         ]);
 
         Idea::factory()->create([
-            'user_id' => $user->id,
             'category_id' => $categoryTwo->id,
-            'status_id' => $status->id,
         ]);
 
         Livewire::test(IdeasIndex::class)
