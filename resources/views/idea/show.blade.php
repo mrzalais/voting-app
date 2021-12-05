@@ -10,7 +10,9 @@
 
     <livewire:idea-show :idea="$idea" :voteCount="$voteCount" />
 
-    <livewire:edit-idea />
+    @can('update', $idea)
+        <livewire:edit-idea :idea="$idea" />
+    @endcan
 
     </div><!-- end ideas and button container -->
 

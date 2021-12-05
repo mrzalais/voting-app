@@ -48,21 +48,32 @@
                                 class="absolute w-44 text-left font-semibold bg-white 
                             shadow-dialog rounded-xl z-10 py-3 md:ml-8 top-8 md:top-6 right-0 
                             md:left-0">
-                                <li><a href="#" @click="
-                                    isOpen = false 
-                                    $dispatch('custom-show-edit-modal')
-                                    "
-                                        class="hover:bg-gray-100 block transition 
+                                @can('update', $idea)
+                                    <li>
+                                        <a href="#" @click="
+                                                isOpen = false 
+                                                $dispatch('custom-show-edit-modal')
+                                                "
+                                            class="hover:bg-gray-100 block transition 
                             duration-150 ease-in px-5 py-3">Edit
-                                        Idea</a></li>
-                                <li><a href="#"
+                                            Idea
+                                        </a>
+                                    </li>
+                                @endcan
+                                <li>
+                                    <a href="#"
                                         class="hover:bg-gray-100 block transition 
                                 duration-150 ease-in px-5 py-3">Mark
-                                        as Spam</a></li>
-                                <li><a href="#"
+                                        as Spam
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
                                         class="hover:bg-gray-100 block transition 
                                 duration-150 ease-in px-5 py-3">Delete
-                                        Idea</a></li>
+                                        Idea
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -132,8 +143,8 @@
                                 <svg class="text-gray-600 w-4 transform -rotate-45" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 
-                                2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 
-                                8.486L20.5 13" />
+                                        2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 
+                                        8.486L20.5 13" />
                                 </svg>
                                 <span class="ml-1">Attach</span>
                             </button>
