@@ -50,28 +50,26 @@
                             md:left-0">
                                 @can('update', $idea)
                                     <li>
-                                        <a href="#" @click="
-                                                isOpen = false 
-                                                $dispatch('custom-show-edit-modal')
-                                                "
+                                        <a href="#" @click="isOpen = false 
+                                            $dispatch('custom-show-edit-modal')"
                                             class="hover:bg-gray-100 block transition 
-                            duration-150 ease-in px-5 py-3">Edit
-                                            Idea
+                            duration-150 ease-in px-5 py-3">
+                                            Edit Idea
                                         </a>
                                     </li>
                                 @endcan
                                 <li>
                                     <a href="#"
                                         class="hover:bg-gray-100 block transition 
-                                duration-150 ease-in px-5 py-3">Mark
-                                        as Spam
+                                duration-150 ease-in px-5 py-3">
+                                        Mark as Spam
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#"
                                         class="hover:bg-gray-100 block transition 
-                                duration-150 ease-in px-5 py-3">Delete
-                                        Idea
+                                duration-150 ease-in px-5 py-3">
+                                        Delete Idea
                                     </a>
                                 </li>
                             </ul>
