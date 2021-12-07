@@ -151,4 +151,39 @@ class OtherFiltersTest extends TestCase
                     && $ideas->get(1)->title === 'Second Idea';
             });
     }
+
+    /** @test */
+    public function spam_ideas_filter_works()
+    {
+        $admin = User::factory()->admin()->create();
+
+        Idea::factory()->create([
+            'title' => 'First Idea',
+            'spam_reports' => 1,
+        ]);
+
+        Idea::factory()->create([
+            'title' => 'Second Idea',
+            'spam_reports' => 2,
+        ]);
+
+        Idea::factory()->create([
+            'title' => 'Third Idea',
+            'spam_reports' => 3,
+        ]);
+
+        Idea::factory()->create([
+            'title' => 'Third Idea',
+        ]);
+
+        Livewire::actingAs($admin)
+            ->test(IdeasIndex::class)
+            ->set('filter', 'Spam Ideas')
+            ->assertViewHas('ideas', function ($ideas) {
+                return $ideas->count() === 3
+                    && $ideas->first()->title === 'Third Idea'
+                    && $ideas->get(1)->title === 'Second Idea'
+                    && $ideas->get(2)->title === 'First Idea';
+            });
+    }
 }
