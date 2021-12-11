@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Vota;
+use App\Models\Vote;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class VotaPolicy
+class VotePolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class VotaPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Vota  $vota
+     * @param  \App\Models\Vote  $vote
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Vota $vota)
+    public function view(User $user, Vote $vote)
     {
         //
     }
@@ -48,10 +48,10 @@ class VotaPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Vota  $vota
+     * @param  \App\Models\Vote  $vote
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Vota $vota)
+    public function update(User $user, Vote $vote)
     {
         //
     }
@@ -60,10 +60,10 @@ class VotaPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Vota  $vota
+     * @param  \App\Models\Vote  $vote
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Vota $vota)
+    public function delete(User $user, Vote $vote)
     {
         //
     }
@@ -72,10 +72,10 @@ class VotaPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Vota  $vota
+     * @param  \App\Models\Vote  $vote
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Vota $vota)
+    public function restore(User $user, Vote $vote)
     {
         //
     }
@@ -84,10 +84,10 @@ class VotaPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Vota  $vota
+     * @param  \App\Models\Vote  $vote
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Vota $vota)
+    public function forceDelete(User $user, Vote $vote)
     {
         //
     }

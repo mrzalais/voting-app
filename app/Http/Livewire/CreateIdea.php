@@ -3,10 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\Idea;
-use App\Models\Vote;
 use Livewire\Component;
 use App\Models\Category;
-use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 class CreateIdea extends Component
 {
@@ -14,7 +13,7 @@ class CreateIdea extends Component
     public int $category = 1;
     public string $description = "";
 
-    protected $rules = [
+    protected array $rules = [
         'title' => 'required|min:4',
         'category' => 'required|exists:categories,id',
         'description' => 'required|min:4',
@@ -35,7 +34,7 @@ class CreateIdea extends Component
 
         $idea->vote(auth()->user());
 
-        session()->flash('success_message', 'Idea was added succesfully.');
+        session()->flash('success_message', 'Idea was added successfully!');
 
         $this->reset();
 

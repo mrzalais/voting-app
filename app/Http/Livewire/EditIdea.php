@@ -4,8 +4,8 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use App\Models\Idea;
-use Illuminate\Http\Response;
 use Livewire\Component;
+use Symfony\Component\HttpFoundation\Response;
 
 class EditIdea extends Component
 {
@@ -14,13 +14,13 @@ class EditIdea extends Component
     public int $category = 1;
     public string $description = "";
 
-    protected $rules = [
+    protected array $rules = [
         'title' => 'required|min:4',
         'category' => 'required|exists:categories,id',
         'description' => 'required|min:4',
     ];
 
-    public function mount(Idea $idea)
+    public function mount(Idea $idea): void
     {
         $this->idea = $idea;
         $this->title = $idea->title;
@@ -28,12 +28,9 @@ class EditIdea extends Component
         $this->description = $idea->description;
     }
 
-    public function updateIdea()
+    public function updateIdea(): void
     {
-        if (auth()->guest() || auth()->user()->cannot('update', $this->idea)) {
-            abort(Response::HTTP_FORBIDDEN);
-        }
-        
+        abort_if(auth()->guest(), Response::HTTP_FORBIDDEN);
         $this->validate();
 
         $this->idea->update([
@@ -42,7 +39,7 @@ class EditIdea extends Component
             'description' => $this->description,
         ]);
 
-        $this->emit('ideaWasUpdated');
+        $this->emit('ideaWasUpdated', 'Idea was updated successfully');
     }
 
     public function render()
