@@ -20,8 +20,8 @@ class CreateIdeaTest extends TestCase
         $response = $this->get(route('idea.index'));
 
         $response->assertSuccessful();
-        $response->assertSee('Please login to create an idea');
-        $response->assertDontSee('Let us know what you would like we\'ll take a look over', false);
+        $response->assertSee('Please log in to create an idea.');
+        $response->assertDontSee('Let us know what you would like, and we\'ll take a look over!', false);
     }
 
     /** @test */
@@ -32,8 +32,8 @@ class CreateIdeaTest extends TestCase
         $response = $this->actingAs($user)->get(route('idea.index'));
 
         $response->assertSuccessful();
-        $response->assertDontSee('Please login to create an idea');
-        $response->assertSee("Let us know what you would like and we'll taka a look over!", false);
+        $response->assertDontSee('Please log in to create an idea.');
+        $response->assertSee('Let us know what you would like, and we\'ll take a look over!', false);
     }
 
     /** @test */

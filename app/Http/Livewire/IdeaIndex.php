@@ -9,7 +9,7 @@ class IdeaIndex extends Component
 {
     public Idea $idea;
     public int $voteCount;
-    public ?bool $hasVoted;
+    public ?bool $hasVoted = null;
 
     public function mount(Idea $idea, $voteCount): void
     {

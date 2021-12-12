@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 use App\Models\Idea;
 use App\Models\User;
@@ -9,9 +10,7 @@ use Livewire\Livewire;
 use App\Models\Category;
 use App\Http\Livewire\EditIdea;
 use App\Http\Livewire\IdeaShow;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\Response;
 
 class EditIdeaTest extends TestCase
 {

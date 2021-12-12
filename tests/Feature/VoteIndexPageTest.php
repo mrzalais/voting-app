@@ -138,10 +138,8 @@ class VoteIndexPageTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-        $this->assertDatabaseHas('votes', [
-            'user_id' => $user->id,
-            'idea_id' => $idea->id,
-        ]);
+        $idea->votes_count = 1;
+        $idea->voted_by_user = 1;
 
         Livewire::actingAs($user)
             ->test(IdeaIndex::class, [
