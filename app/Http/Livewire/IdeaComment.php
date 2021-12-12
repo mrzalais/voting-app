@@ -8,10 +8,12 @@ use Livewire\Component;
 class IdeaComment extends Component
 {
     public Comment $comment;
+    public int $ideaUserId;
 
-    public function mount(Comment $comment): void
+    public function mount(Comment $comment, int $ideaUserId): void
     {
         $this->comment = $comment;
+        $this->ideaUserId = $ideaUserId;
     }
 
 
