@@ -27,6 +27,7 @@ use Illuminate\Support\Carbon;
  * @property int $spam_reports
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property bool $voted_by_user
  * @property-read User $User
  * @property-read Category $category
  * @property-read Status $status

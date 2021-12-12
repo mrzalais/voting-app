@@ -11,11 +11,11 @@ class IdeaIndex extends Component
     public int $voteCount;
     public ?bool $hasVoted;
 
-    public function mount(Idea $idea, $voteCount)
+    public function mount(Idea $idea, $voteCount): void
     {
         $this->idea = $idea;
         $this->voteCount = $voteCount;
-        $this->hasVoted = $idea->isVotedByUser(auth()->user());
+        $this->hasVoted = $idea->voted_by_user;
     }
 
     public function vote()
