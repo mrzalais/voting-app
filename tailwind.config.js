@@ -13,7 +13,7 @@ module.exports = {
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
-  
+
         black: colors.black,
         white: colors.white,
         gray: colors.trueGray,
@@ -24,6 +24,7 @@ module.exports = {
         'red' : '#ec454f',
         'red-100': '#fee2e2',
         'green' : '#1aab8b',
+        'green-50': '#f0fdf4',
         'purple' : '#8b60ed',
       },
       spacing: {
