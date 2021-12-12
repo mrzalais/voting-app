@@ -11,6 +11,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -48,6 +49,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Idea whereUserId($value)
  * @method static Builder|Idea withUniqueSlugConstraints(Model $model, string $attribute, array $config, string $slug)
  * @mixin Eloquent
+ * @property-read Collection|Comment[] $comments
+ * @property-read int|null $comments_count
  */
 class Idea extends Model
 {
@@ -79,6 +82,11 @@ class Idea extends Model
     public function status(): BelongsTo
     {
         return $this->belongsTo(Status::class);
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
     }
 
     public function votes(): BelongsToMany

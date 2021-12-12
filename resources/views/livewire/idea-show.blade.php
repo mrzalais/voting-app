@@ -19,7 +19,7 @@
                     {{ $idea->description }}
                 </div>
                 <div class="flex flex-col md:flex-row md:items-center justify-between mt-6">
-                    <div class="flex items-center text-xs text-gray-400 font-semibold 
+                    <div class="flex items-center text-xs text-gray-400 font-semibold
                     space-x-2">
                         <div class="hidden md:block font-bold text-gray-900">
                             {{ $idea->user->name }}
@@ -29,54 +29,54 @@
                         <div>&bull;</div>
                         <div>{{ $idea->category->name }}</div>
                         <div>&bull;</div>
-                        <div class="text-gray-900">3 Comments</div>
+                        <div class="text-gray-900">{{ $idea->comments->count() }} comments</div>
                     </div>
                     <div x-data="{ isOpen: false}" class="flex items-center space-x-2 mt-4 md:mt-0">
                         <div
-                            class="{{ $idea->status->class }} text-xxs font-bold uppercase leading-none 
+                            class="{{ $idea->status->class }} text-xxs font-bold uppercase leading-none
                         rounded-full text-center w-28 h-7 py-2 px-4">
                             {{ $idea->status->name }}
                         </div>
                         @auth
                             <div class="relative">
                                 <button @click="isOpen = !isOpen"
-                                    class="relative bg-gray-100 hover:bg-gray-200 border rounded-full 
+                                    class="relative bg-gray-100 hover:bg-gray-200 border rounded-full
                             h-7 transition duration-150 ease-in px-3">
                                     <svg fill="currentColor" width="24" height="6">
-                                        <path d="M2.97.061A2.969 
+                                        <path d="M2.97.061A2.969
                                             2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184
-                                             0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 
-                                             10-.003 5.94A2.97 2.97 0 0021.03.06z" style="color: rgba(163, 163, 163, .5)">
+                                             0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0
+                                             10-.003 5.94A2.97 2.97 0 0021.03.06z" style="color: rgba(163, 163, 163, .5)"/>
                                     </svg>
                                 </button>
                                 <ul x-cloak x-show.transition.origin.top.left="isOpen" @click.away="isOpen = false"
                                     @keydown.escape.window="isOpen = false"
-                                    class="absolute w-44 text-left font-semibold bg-white 
-                            shadow-dialog rounded-xl z-10 py-3 md:ml-8 top-8 md:top-6 right-0 
+                                    class="absolute w-44 text-left font-semibold bg-white
+                            shadow-dialog rounded-xl z-10 py-3 md:ml-8 top-8 md:top-6 right-0
                             md:left-0">
                                     @can('update', $idea)
                                         <li>
-                                            <a href="#" @click="isOpen = false 
+                                            <a href="#" @click="isOpen = false
                                                                                     $dispatch('custom-show-edit-modal')"
-                                                class="hover:bg-gray-100 block transition 
+                                                class="hover:bg-gray-100 block transition
                             duration-150 ease-in px-5 py-3">
                                                 Edit Idea
                                             </a>
                                         </li>
                                     @endcan
                                     <li>
-                                        <a href="#" @click="isOpen = false 
+                                        <a href="#" @click="isOpen = false
                                                             $dispatch('custom-show-mark-idea-as-spam-modal')"
-                                            class="hover:bg-gray-100 block transition 
+                                            class="hover:bg-gray-100 block transition
                         duration-150 ease-in px-5 py-3">
                                             Mark as Spam
                                         </a>
                                     </li>
                                     @admin
                                     <li>
-                                        <a href="#" @click="isOpen = false 
+                                        <a href="#" @click="isOpen = false
                                                             $dispatch('custom-show-mark-idea-as-not-spam-modal')"
-                                            class="hover:bg-gray-100 block transition 
+                                            class="hover:bg-gray-100 block transition
                         duration-150 ease-in px-5 py-3">
                                             Not Spam
                                         </a>
@@ -84,9 +84,9 @@
                                     @endadmin
                                     @can('delete', $idea)
                                         <li>
-                                            <a href="#" @click="isOpen = false 
+                                            <a href="#" @click="isOpen = false
                                                                                 $dispatch('custom-show-delete-modal')"
-                                                class="hover:bg-gray-100 block transition 
+                                                class="hover:bg-gray-100 block transition
                         duration-150 ease-in px-5 py-3">
                                                 Delete Idea
                                             </a>
@@ -130,8 +130,8 @@
         <div class="flex flex-col md:flex-row items-center space-x-4 ml-6">
             <div x-data="{ isOpen: false}" class="relative">
                 <button type="button" @click="isOpen = !isOpen"
-                    class="flex items-center justify-center h-11 w-32 text-sm 
-                    bg-blue font-semibold rounded-xl border border-blue text-white 
+                    class="flex items-center justify-center h-11 w-32 text-sm
+                    bg-blue font-semibold rounded-xl border border-blue text-white
                     hover:bg-blue-hover transition duration-150 ease-in px-6 py-3">
                     Reply
                 </button>
@@ -149,20 +149,20 @@
                         <div class="flex flex-col md:flex-row items-center md:space-x-3">
                             <button type="button"
                                 class="flex items-center justify-center h-11 w-full
-                            md:w-1/2 text-sm bg-blue font-semibold rounded-xl border border-blue 
-                            text-white hover:bg-blue-hover transition duration-150 ease-in px-6 
+                            md:w-1/2 text-sm bg-blue font-semibold rounded-xl border border-blue
+                            text-white hover:bg-blue-hover transition duration-150 ease-in px-6
                             py-3">
                                 Post comment
                             </button>
                             <button type="button"
-                                class="flex items-center justify-center w-full 
+                                class="flex items-center justify-center w-full
                             md:w-32 h-11 text-xs bg-gray-200 font-semibold rounded-xl border
                             border-gray-200 hover:border-gray-400 transition duration-150
                             ease-in px-6 py-3 mt-2 md:mt-0">
                                 <svg class="text-gray-600 w-4 transform -rotate-45" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 
-                                        2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828
+                                        2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486
                                         8.486L20.5 13" />
                                 </svg>
                                 <span class="ml-1">Attach</span>
