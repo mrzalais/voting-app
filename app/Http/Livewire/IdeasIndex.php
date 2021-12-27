@@ -26,22 +26,22 @@ class IdeasIndex extends Component
 
     protected $listeners = ['queryStringUpdatedStatus'];
 
-    public function mount()
+    public function mount(): void
     {
         $this->status = request()->status ?? 'All';
     }
 
-    public function updatingCategory()
+    public function updatingCategory(): void
     {
         $this->resetPage();
     }
 
-    public function updatingFilter()
+    public function updatingFilter(): void
     {
         $this->resetPage();
     }
 
-    public function updatingSearch()
+    public function updatingSearch(): void
     {
         $this->resetPage();
     }
@@ -53,9 +53,10 @@ class IdeasIndex extends Component
                 return redirect()->route('login');
             }
         }
+        return null;
     }
 
-    public function queryStringUpdatedStatus(string $newStatus)
+    public function queryStringUpdatedStatus(string $newStatus): void
     {
         $this->resetPage();
         $this->status = $newStatus;
@@ -95,7 +96,7 @@ class IdeasIndex extends Component
                 ->withCount('votes')
                 ->withCount('comments')
                 ->orderBy('id', 'desc')
-                ->simplePaginate(Idea::PAGINATION_COUNT),
+                ->simplePaginate(),
             'categories' => $categories,
         ]);
     }

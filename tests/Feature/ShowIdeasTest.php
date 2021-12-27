@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\Idea;
-use App\Models\User;
 use App\Models\Status;
 use App\Models\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -74,24 +73,19 @@ class ShowIdeasTest extends TestCase
     /** @test */
     public function ideas_pagination_works()
     {
-        Idea::factory(Idea::PAGINATION_COUNT + 1)->create();
+        $ideaOne = Idea::factory()->create();
 
-        $ideaOnFirstPage = Idea::find(1);
-        $ideaOnFirstPage->title = 'My Idea On First Page';
-        $ideaOnFirstPage->save();
-        $ideaOnSecondPage = Idea::find(Idea::PAGINATION_COUNT + 1);
-        $ideaOnSecondPage->title = 'My Idea On Second Page';
-        $ideaOnSecondPage->save();
+        Idea::factory($ideaOne->getPerPage())->create();
 
         $response = $this->get('/');
 
-        $response->assertSee($ideaOnSecondPage->title);
-        $response->assertDontSee($ideaOnFirstPage->title);
+        $response->assertSee(Idea::find(Idea::count())->title);
+        $response->assertDontSee($ideaOne->title);
 
         $response = $this->get('/?page=2');
 
-        $response->assertSee($ideaOnFirstPage->title);
-        $response->assertDontSee($ideaOnSecondPage->title);
+        $response->assertDontSee(Idea::find(Idea::count())->title);
+        $response->assertSee($ideaOne->title);
     }
 
     /** @test */
@@ -124,7 +118,7 @@ class ShowIdeasTest extends TestCase
     {
         $idea = Idea::factory()->create();
 
-        $response = $this->get('/?category=Category%202&status=Considering');
+        $this->get('/?category=Category%202&status=Considering');
         $response = $this->get(route('idea.show', $idea));
 
         $this->assertStringContainsString('/?category=Category%202&status=Considering', $response['backUrl']);
