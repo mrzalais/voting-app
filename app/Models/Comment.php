@@ -49,4 +49,9 @@ class Comment extends Model
     {
         return $this->belongsTo(Idea::class);
     }
+
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(Status::class);
+    }
 }

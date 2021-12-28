@@ -67,8 +67,8 @@ class AdminSetStatusTest extends TestCase
         /** @var \Illuminate\Contracts\Auth\Authenticatable $admin */
         $admin = User::factory()->admin()->create();
 
-        $statusOpen = Status::factory()->create(['name' => 'Open', 'class' => 'bg-gray-200']);
-        $statusConsidering = Status::factory()->create(['name' => 'Considering', 'class' => 'bg-gray-200']);
+        $statusOpen = Status::factory()->create(['name' => 'Open']);
+        $statusConsidering = Status::factory()->create(['name' => 'Considering']);
 
         $idea = Idea::factory()->create([
             'status_id' => $statusOpen->id,
@@ -94,8 +94,8 @@ class AdminSetStatusTest extends TestCase
         /** @var \Illuminate\Contracts\Auth\Authenticatable $admin */
         $admin = User::factory()->admin()->create();
 
-        $statusOpen = Status::factory()->create(['name' => 'Open', 'class' => 'bg-gray-200']);
-        $statusConsidering = Status::factory()->create(['name' => 'Considering', 'class' => 'bg-gray-200']);
+        $statusOpen = Status::factory()->create(['name' => 'Open']);
+        $statusConsidering = Status::factory()->create(['name' => 'Considering']);
 
         $idea = Idea::factory()->create([
             'status_id' => $statusOpen->id,
