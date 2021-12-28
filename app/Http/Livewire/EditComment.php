@@ -25,7 +25,7 @@ class EditComment extends Component
         $this->emit('editCommentWasSet');
     }
 
-    public function updateComment(Comment $comment): void
+    public function updateComment(): void
     {
         if (auth()->guest() || auth()->user()->cannot('update', $this->comment)) {
             abort(Response::HTTP_FORBIDDEN);
