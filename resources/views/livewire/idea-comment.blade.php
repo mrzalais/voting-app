@@ -41,7 +41,7 @@
                     <div>{{ $comment->created_at->diffForHumans() }}</div>
                 </div>
                 @auth
-                    <div class="flex items-center space-x-2" x-data="{ isOpen: false}">
+                    <div class="text-gray-900 flex items-center space-x-2" x-data="{ isOpen: false}">
                         <div class="relative">
                             <button class="relative bg-gray-100 hover:bg-gray-200 border rounded-full
                                 h-7 transition duration-150 ease-in px-3"
@@ -53,8 +53,8 @@
                                 10-.003 5.94A2.97 2.97 0 0021.03.06z" style="color: rgba(163, 163, 163, .5)"/>
                                 </svg>
                             </button>
-                            <ul class="absolute w-44 text-left font-semibold bg-white shadow-dialog rounded-xl z-10 py-3
-                        md:ml-8 top-8 md:top-6 right-0 md:left-0"
+                            <ul class="absolute w-44 text-left font-semibold bg-white shadow-dialog rounded-xl z-10 py-
+                             md:ml-8 top-8 md:top-6 right-0 md:left-0"
                                 x-cloak
                                 x-show.transition.origin.top.left="isOpen"
                                 @click.away="isOpen = false"

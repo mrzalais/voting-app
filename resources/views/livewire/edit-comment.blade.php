@@ -34,7 +34,7 @@
                 <h3 class="text-center text-lg font-medium text-gray-900">Edit Comment</h3>
                 <form wire:submit.prevent="updateComment" action="#" method="POST" class="space-y-4 px-4 py-6">
                     <div>
-                        <textarea x-ref="editComment" wire:model.defer="body" name="idea" id="idea" cols="30" rows="4"
+                        <textarea x-ref="editComment" wire:model.defer="body" name="idea" cols="30" rows="4"
                                   class="w-full
                                   border-none bg-gray-100 rounded-xl placeholder-gray-900 text-sm
                                   px-4-py-2"

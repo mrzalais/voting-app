@@ -21,7 +21,7 @@
                 <div>
                     <label class="inline-flex items-center">
                         <input wire:model="status" type="radio" checked=""
-                            class="bg-gray-200 
+                            class="bg-gray-200
                         text-gray-600 border-none" name="radio-direct"
                             value="1">
                         <span class="ml-2">Open</span>
@@ -30,7 +30,7 @@
                 <div>
                     <label class="inline-flex items-center">
                         <input wire:model="status" type="radio"
-                            class="bg-gray-200 
+                            class="bg-gray-200
                         text-purple border-none" name="radio-direct"
                             value="2">
                         <span class="ml-2">Considering</span>
@@ -39,7 +39,7 @@
                 <div>
                     <label class="inline-flex items-center">
                         <input wire:model="status" type="radio"
-                            class="bg-gray-200 
+                            class="bg-gray-200
                         text-yellow border-none" name="radio-direct"
                             value="3">
                         <span class="ml-2">In Progress</span>
@@ -48,7 +48,7 @@
                 <div>
                     <label class="inline-flex items-center">
                         <input wire:model="status" type="radio"
-                            class="bg-gray-200 
+                            class="bg-gray-200
                         text-green border-none" name="radio-direct"
                             value="4">
                         <span class="ml-2">Implemented</span>
@@ -57,7 +57,7 @@
                 <div>
                     <label class="inline-flex items-center">
                         <input wire:model="status" type="radio"
-                            class="bg-gray-200 
+                            class="bg-gray-200
                         text-red border-none" name="radio-direct"
                             value="5">
                         <span class="ml-2">Closed</span>
@@ -66,7 +66,7 @@
             </div>
 
             <div>
-                <textarea name="update_comment" id="update_comments" cols="30" rows="3"
+                <textarea wire:model="comment" name="update_comment" id="update_comments" cols="30" rows="3"
                     class="w-full text-sm bg-gray-100 rounded-xl placeholder-gray-900
                 border-none px-4 py-2"
                     placeholder="Add an update comment (optional)"></textarea>
@@ -80,8 +80,8 @@
                 ease-in px-6 py-3">
                     <svg class="text-gray-600 w-4 transform -rotate-45" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 
-                    2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828
+                    2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486
                     8.486L20.5 13" />
                     </svg>
                     <span class="ml-1">Attach</span>
