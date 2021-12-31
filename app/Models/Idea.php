@@ -105,12 +105,12 @@ class Idea extends Model
             ->exists();
     }
 
-    public function vote(User $user): void
+    public function vote(?User $user): void
     {
         $this->votes()->attach($user);
     }
 
-    public function removeVote(User $user): void
+    public function removeVote(?User $user): void
     {
         $this->votes()->detach($user);
     }
