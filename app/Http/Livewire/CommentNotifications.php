@@ -45,22 +45,42 @@ class CommentNotifications extends Component
         $this->isLoading = false;
     }
 
-    public function markAsRead($notificationId)
+    public function markAsRead($notificationId): void
     {
         abort_if(auth()->guest(), Response::HTTP_FORBIDDEN);
 
         $notification = DatabaseNotification::findOrFail($notificationId);
         $notification->markAsRead();
 
-        $idea = Idea::find($notification->data['idea_id']);
-        $comment = Comment::find($notification->data['comment_id']);
+        $this->scrollToComment($notification);
+    }
 
-        $comments = $idea->comments;
+    public function scrollToComment($notification)
+    {
+        $idea = Idea::find($notification->data['idea_id']);
+        if (!$idea) {
+            session()->flash('error_message', 'This idea no longer exists');
+
+            return redirect()->route('idea.index');
+        }
+
+        $comment = Comment::find($notification->data['comment_id']);
+        if (!$comment) {
+            session()->flash('error_message', 'This comment no longer exists');
+
+            return redirect()->route('idea.index');
+        }
+
+        $comments = $idea->comments()->pluck('id');
+        $commentIndex = $comments->search($comment->id);
+
+        $page = (int)($commentIndex / $comment->getPerPage()) + 1;
 
         session()->flash('scrollToComment', $comment->id);
 
         return redirect()->route('idea.show', [
-           'idea' => $notification->data['idea_slug'],
+            'idea' => $notification->data['idea_slug'],
+            'page' => $page,
         ]);
     }
 
