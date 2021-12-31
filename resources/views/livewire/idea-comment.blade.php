@@ -26,7 +26,7 @@
                 @endif
             </div>
             <div class="text-gray-600 transition duration-150">
-                {{ $comment->body }}
+                {!! nl2br(e( $comment->body)) !!}
             </div>
             <div class="flex items-center justify-between mt-6">
                 <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">

@@ -53,7 +53,7 @@
             </div>
         @endif
         <a href="#">
-            <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp" alt="avatar"
+            <img src="{{ auth()->user()->getAvatar() }}" alt="avatar"
                  class="w-10 h-10 rounded-full">
         </a>
     </div>
