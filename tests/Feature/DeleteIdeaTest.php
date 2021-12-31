@@ -17,7 +17,7 @@ class DeleteIdeaTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function shows_delete_idea_livewire_component_when_user_has_authorization()
+    public function shows_delete_idea_livewire_component_when_user_has_authorization(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create([
@@ -31,7 +31,7 @@ class DeleteIdeaTest extends TestCase
     }
 
     /** @test */
-    public function does_not_show_delete_idea_livewire_component_when_user_does_not_have_authorization()
+    public function does_not_show_delete_idea_livewire_component_when_user_does_not_have_authorization(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
@@ -43,7 +43,7 @@ class DeleteIdeaTest extends TestCase
     }
 
     /** @test */
-    public function deleting_an_idea_works_when_user_has_authorization()
+    public function deleting_an_idea_works_when_user_has_authorization(): void
     {
         $user = User::factory()->create();
 
@@ -62,7 +62,7 @@ class DeleteIdeaTest extends TestCase
     }
 
     /** @test */
-    public function deleting_an_idea_works_when_user_is_admin()
+    public function deleting_an_idea_works_when_user_is_admin(): void
     {
         $admin = User::factory()->admin()->create();
 
@@ -79,7 +79,7 @@ class DeleteIdeaTest extends TestCase
     }
 
     /** @test */
-    public function deleting_an_idea_with_votes_works_when_user_has_authorization()
+    public function deleting_an_idea_with_votes_works_when_user_has_authorization(): void
     {
         $user = User::factory()->create();
 
@@ -104,7 +104,7 @@ class DeleteIdeaTest extends TestCase
     }
 
     /** @test */
-    public function deleting_an_idea_shows_on_menu_when_user_has_authorization()
+    public function deleting_an_idea_shows_on_menu_when_user_has_authorization(): void
     {
         $user = User::factory()->create();
 
@@ -121,7 +121,7 @@ class DeleteIdeaTest extends TestCase
     }
 
     /** @test */
-    public function editing_an_idea_does_not_show_on_menu_when_user_does_not_have_authorization()
+    public function editing_an_idea_does_not_show_on_menu_when_user_does_not_have_authorization(): void
     {
         $user = User::factory()->create();
 

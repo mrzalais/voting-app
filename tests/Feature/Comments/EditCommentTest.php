@@ -19,7 +19,7 @@ class EditCommentTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function shows_edit_comment_livewire_component_when_user_has_authorization()
+    public function shows_edit_comment_livewire_component_when_user_has_authorization(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create([
@@ -33,7 +33,7 @@ class EditCommentTest extends TestCase
     }
 
     /** @test */
-    public function does_not_show_edit_comment_livewire_component_when_user_does_not_have_authorization()
+    public function does_not_show_edit_comment_livewire_component_when_user_does_not_have_authorization(): void
     {
         $idea = Idea::factory()->create();
 
@@ -42,7 +42,7 @@ class EditCommentTest extends TestCase
     }
 
     /** @test */
-    public function edit_comment_is_set_correctly_when_user_clicks_it_from_menu()
+    public function edit_comment_is_set_correctly_when_user_clicks_it_from_menu(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
@@ -61,7 +61,7 @@ class EditCommentTest extends TestCase
     }
 
     /** @test */
-    public function edit_comment_form_validation_works()
+    public function edit_comment_form_validation_works(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
@@ -84,7 +84,7 @@ class EditCommentTest extends TestCase
     }
 
     /** @test */
-    public function editing_a_comment_works_when_user_has_authorization()
+    public function editing_a_comment_works_when_user_has_authorization(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
@@ -106,7 +106,7 @@ class EditCommentTest extends TestCase
     }
 
     /** @test */
-    public function editing_a_comment_does_not_work_when_user_does_not_have_authorization_because_it_is_not_their_comment()
+    public function user_cannot_edit_other_user_comment(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
@@ -125,7 +125,7 @@ class EditCommentTest extends TestCase
     }
 
     /** @test */
-    public function editing_a_comment_shows_on_menu_when_user_has_authorization()
+    public function editing_a_comment_shows_on_menu_when_user_has_authorization(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
@@ -145,7 +145,7 @@ class EditCommentTest extends TestCase
     }
 
     /** @test */
-    public function editing_a_comment_does_not_show_on_menu_when_user_does_not_have_authorization()
+    public function editing_a_comment_does_not_show_on_menu_when_user_does_not_have_authorization(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();

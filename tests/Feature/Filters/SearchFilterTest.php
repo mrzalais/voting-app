@@ -14,7 +14,7 @@ class SearchFilterTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function searching_works_when_string_length_is_more_than_3_characters()
+    public function searching_works_when_string_length_is_more_than_3_characters(): void
     {
         Idea::factory()->create([
             'title' => 'First Idea',
@@ -37,7 +37,7 @@ class SearchFilterTest extends TestCase
     }
 
     /** @test */
-    public function searching_does_not_work_when_string_length_is_less_than_3_characters()
+    public function searching_does_not_work_when_string_length_is_less_than_3_characters(): void
     {
         Idea::factory()->create([
             'title' => 'First Idea',
@@ -59,7 +59,7 @@ class SearchFilterTest extends TestCase
     }
 
     /** @test */
-    public function search_works_correctly_with_category_filters()
+    public function search_works_correctly_with_category_filters(): void
     {
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);

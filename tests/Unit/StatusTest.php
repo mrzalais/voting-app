@@ -14,7 +14,7 @@ class StatusTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function can_get_count_of_each_status()
+    public function can_get_count_of_each_status(): void
     {
         $statuses = [
             'Open' => 15,

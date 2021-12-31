@@ -15,7 +15,7 @@ class IdeaTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function can_check_if_idea_is_voted_for_by_user()
+    public function can_check_if_idea_is_voted_for_by_user(): void
     {
         $userA = User::factory()->create();
         $userB = User::factory()->create();
@@ -33,7 +33,7 @@ class IdeaTest extends TestCase
     }
 
     /** @test */
-    public function user_can_vote_for_idea()
+    public function user_can_vote_for_idea(): void
     {
         $user = User::factory()->create();
 
@@ -45,7 +45,7 @@ class IdeaTest extends TestCase
     }
 
     /** @test */
-    public function user_can_remove_vote_for_idea()
+    public function user_can_remove_vote_for_idea(): void
     {
         $user = User::factory()->create();
 

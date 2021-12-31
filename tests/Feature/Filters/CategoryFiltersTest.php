@@ -16,7 +16,7 @@ class CategoryFiltersTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function selecting_a_category_filters_correctly()
+    public function selecting_a_category_filters_correctly(): void
     {
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
@@ -42,7 +42,7 @@ class CategoryFiltersTest extends TestCase
     }
 
     /** @test */
-    public function the_category_query_string_filters_correctly()
+    public function the_category_query_string_filters_correctly(): void
     {
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
@@ -68,7 +68,7 @@ class CategoryFiltersTest extends TestCase
     }
 
     /** @test */
-    public function selecting_a_status_and_a_category_filters_correctly()
+    public function selecting_a_status_and_a_category_filters_correctly(): void
     {
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
@@ -107,7 +107,7 @@ class CategoryFiltersTest extends TestCase
     }
 
     /** @test */
-    public function the_category_query_string_filters_correctly_with_status_and_category()
+    public function the_category_query_string_filters_correctly_with_status_and_category(): void
     {
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
@@ -145,7 +145,7 @@ class CategoryFiltersTest extends TestCase
     }
 
     /** @test */
-    public function selecting_all_categories_filters_correctly()
+    public function selecting_all_categories_filters_correctly(): void
     {
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);

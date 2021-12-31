@@ -17,7 +17,7 @@ class SpamManagementTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function shows_mark_idea_as_spam_livewire_component_when_user_has_authorization()
+    public function shows_mark_idea_as_spam_livewire_component_when_user_has_authorization(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
@@ -29,7 +29,7 @@ class SpamManagementTest extends TestCase
     }
 
     /** @test */
-    public function does_not_show_mark_idea_as_spam_livewire_component_when_user_does_not_have_authorization()
+    public function does_not_show_mark_idea_as_spam_livewire_component_when_user_does_not_have_authorization(): void
     {
         $idea = Idea::factory()->create();
 
@@ -38,7 +38,7 @@ class SpamManagementTest extends TestCase
     }
 
     /** @test */
-    public function marking_an_idea_as_spam_works_when_user_has_authorization()
+    public function marking_an_idea_as_spam_works_when_user_has_authorization(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
@@ -55,7 +55,7 @@ class SpamManagementTest extends TestCase
     }
 
     /** @test */
-    public function marking_an_idea_as_spam_does_not_work_when_user_does_not_have_authorization()
+    public function marking_an_idea_as_spam_does_not_work_when_user_does_not_have_authorization(): void
     {
         $idea = Idea::factory()->create();
 
@@ -68,7 +68,7 @@ class SpamManagementTest extends TestCase
     }
 
     /** @test */
-    public function marking_an_idea_as_spam_shows_on_menu_when_user_has_authorization()
+    public function marking_an_idea_as_spam_shows_on_menu_when_user_has_authorization(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
@@ -82,7 +82,7 @@ class SpamManagementTest extends TestCase
     }
 
     /** @test */
-    public function marking_an_idea_as_spam_does_not_show_on_menu_when_user_does_not_have_authorization()
+    public function marking_an_idea_as_spam_does_not_show_on_menu_when_user_does_not_have_authorization(): void
     {
         $idea = Idea::factory()->create();
 
@@ -94,7 +94,7 @@ class SpamManagementTest extends TestCase
     }
 
     /** @test */
-    public function spam_reports_count_shows_on_ideas_index_page_if_logged_in_as_admin()
+    public function spam_reports_count_shows_on_ideas_index_page_if_logged_in_as_admin(): void
     {
         $admin = User::factory()->admin()->create();
         $idea = Idea::factory()->create([
@@ -110,7 +110,7 @@ class SpamManagementTest extends TestCase
     }
 
     /** @test */
-    public function spam_reports_count_shows_on_idea_show_page_if_logged_in_as_admin()
+    public function spam_reports_count_shows_on_idea_show_page_if_logged_in_as_admin(): void
     {
         $admin = User::factory()->admin()->create();
         $idea = Idea::factory()->create([

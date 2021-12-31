@@ -12,7 +12,7 @@ class ShowCommentsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function idea_comments_livewire_component_renders()
+    public function idea_comments_livewire_component_renders(): void
     {
         $idea = Idea::factory()->create();
 
@@ -26,7 +26,7 @@ class ShowCommentsTest extends TestCase
     }
 
     /** @test */
-    public function idea_comment_livewire_component_renders()
+    public function idea_comment_livewire_component_renders(): void
     {
         $idea = Idea::factory()->create();
 
@@ -40,7 +40,7 @@ class ShowCommentsTest extends TestCase
     }
 
     /** @test */
-    public function no_comments_show_appropriate_message()
+    public function no_comments_show_appropriate_message(): void
     {
         $idea = Idea::factory()->create();
 
@@ -49,7 +49,7 @@ class ShowCommentsTest extends TestCase
     }
 
     /** @test */
-    public function list_of_comments_shows_on_idea_page()
+    public function list_of_comments_shows_on_idea_page(): void
     {
         $idea = Idea::factory()->create();
 
@@ -69,7 +69,7 @@ class ShowCommentsTest extends TestCase
     }
 
     /** @test */
-    public function comment_count_shows_correctly_on_index_page()
+    public function comment_count_shows_correctly_on_index_page(): void
     {
         $idea = Idea::factory()->create();
 
@@ -88,7 +88,7 @@ class ShowCommentsTest extends TestCase
     }
 
     /** @test */
-    public function op_badge_shows_if_author_of_idea_comments_on_idea()
+    public function op_badge_shows_if_author_of_idea_comments_on_idea(): void
     {
         $idea = Idea::factory()->create();
 
@@ -107,7 +107,7 @@ class ShowCommentsTest extends TestCase
     }
 
     /** @test */
-    public function comments_pagination_works()
+    public function comments_pagination_works(): void
     {
         $idea = Idea::factory()->create();
 

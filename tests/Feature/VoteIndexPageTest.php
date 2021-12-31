@@ -18,7 +18,7 @@ class VoteIndexPageTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function index_page_contains_idea_index_livewire_component()
+    public function index_page_contains_idea_index_livewire_component(): void
     {
         Idea::factory()->create();
 
@@ -27,7 +27,7 @@ class VoteIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function ideas_index_livewire_component_correctly_receives_vote_count()
+    public function ideas_index_livewire_component_correctly_receives_vote_count(): void
     {
         $userA = User::factory()->create();
         $userB = User::factory()->create();
@@ -51,7 +51,7 @@ class VoteIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function vote_count_shows_correctly_on_index_page_livewire_component()
+    public function vote_count_shows_correctly_on_index_page_livewire_component(): void
     {
         $idea = Idea::factory()->create();
 
@@ -63,7 +63,7 @@ class VoteIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function user_who_is_logged_in_sees_voted_if_idea_already_voted_for()
+    public function user_who_is_logged_in_sees_voted_if_idea_already_voted_for(): void
     {
         $user = User::factory()->create();
 
@@ -87,7 +87,7 @@ class VoteIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function user_who_is_not_logged_in_is_redirected_to_login_page_when_trying_to_vote()
+    public function user_who_is_not_logged_in_is_redirected_to_login_page_when_trying_to_vote(): void
     {
         $idea = Idea::factory()->create();
 
@@ -100,7 +100,7 @@ class VoteIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function user_who_is_logged_in_can_vote_for_idea()
+    public function user_who_is_logged_in_can_vote_for_idea(): void
     {
         $user = User::factory()->create();
 
@@ -127,7 +127,7 @@ class VoteIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function user_who_is_logged_in_can_remove_vote_for_idea()
+    public function user_who_is_logged_in_can_remove_vote_for_idea(): void
     {
         $user = User::factory()->create();
 

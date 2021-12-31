@@ -17,14 +17,14 @@ class StatusFiltersTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function index_page_contains_status_filters_livewire_component()
+    public function index_page_contains_status_filters_livewire_component(): void
     {
         $this->get(route('idea.index'))
             ->assertSeeLivewire('status-filters');
     }
 
     /** @test */
-    public function show_page_contains_status_filters_livewire_component()
+    public function show_page_contains_status_filters_livewire_component(): void
     {
         $idea = Idea::factory()->create();
 
@@ -33,7 +33,7 @@ class StatusFiltersTest extends TestCase
     }
 
     /** @test */
-    public function shows_correct_status_count()
+    public function shows_correct_status_count(): void
     {
         $status = Status::factory()->create(['id' => 4, 'name' => 'Implemented']);
 
@@ -51,7 +51,7 @@ class StatusFiltersTest extends TestCase
     }
 
     /** @test */
-    public function filtering_works_when_query_string_in_place()
+    public function filtering_works_when_query_string_in_place(): void
     {
         $user = User::factory()->create();
 
@@ -77,7 +77,7 @@ class StatusFiltersTest extends TestCase
     }
 
     /** @test */
-    public function show_page_does_not_show_selected_status_border_in_header()
+    public function show_page_does_not_show_selected_status_border_in_header(): void
     {
         $idea = Idea::factory()->create();
 
@@ -86,7 +86,7 @@ class StatusFiltersTest extends TestCase
     }
 
     /** @test */
-    public function index_page_shows_selected_status_border_in_header()
+    public function index_page_shows_selected_status_border_in_header(): void
     {
         $response = $this->get(route('idea.index'));
         $response->assertSee('border-blue text-gray-900');

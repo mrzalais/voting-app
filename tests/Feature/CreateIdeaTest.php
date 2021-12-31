@@ -15,7 +15,7 @@ class CreateIdeaTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function create_idea_form_does_not_show_when_logged_out()
+    public function create_idea_form_does_not_show_when_logged_out(): void
     {
         $response = $this->get(route('idea.index'));
 
@@ -25,7 +25,7 @@ class CreateIdeaTest extends TestCase
     }
 
     /** @test */
-    public function create_idea_form_does_show_when_logged_in()
+    public function create_idea_form_does_show_when_logged_in(): void
     {
         /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
         $user = User::factory()->create();
@@ -37,7 +37,7 @@ class CreateIdeaTest extends TestCase
     }
 
     /** @test */
-    public function main_page_contains_create_idea_livewire_component()
+    public function main_page_contains_create_idea_livewire_component(): void
     {
         /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
         $user = User::factory()->create();
@@ -47,7 +47,7 @@ class CreateIdeaTest extends TestCase
     }
 
     /** @test */
-    public function create_idea_form_validation_works()
+    public function create_idea_form_validation_works(): void
     {
         Livewire::actingAs(User::factory()->create())
             ->test(CreateIdea::class)
@@ -60,7 +60,7 @@ class CreateIdeaTest extends TestCase
     }
 
     /** @test */
-    public function creating_an_idea_works_correctly()
+    public function creating_an_idea_works_correctly(): void
     {
         /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
         $user = User::factory()->create();
@@ -93,7 +93,7 @@ class CreateIdeaTest extends TestCase
     }
 
     /** @test */
-    public function creating_two_ideas_with_same_title_still_works_but_has_different_slugs()
+    public function creating_two_ideas_with_same_title_still_works_but_has_different_slugs(): void
     {
         /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
         $user = User::factory()->create();

@@ -17,7 +17,7 @@ class EditIdeaTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function shows_edit_idea_livewire_component_when_user_has_authorization()
+    public function shows_edit_idea_livewire_component_when_user_has_authorization(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create([
@@ -31,7 +31,7 @@ class EditIdeaTest extends TestCase
     }
 
     /** @test */
-    public function does_not_show_edit_idea_livewire_component_when_user_does_not_have_authorization()
+    public function does_not_show_edit_idea_livewire_component_when_user_does_not_have_authorization(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
@@ -43,7 +43,7 @@ class EditIdeaTest extends TestCase
     }
 
     /** @test */
-    public function edit_idea_form_validation_works()
+    public function edit_idea_form_validation_works(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create([
@@ -63,7 +63,7 @@ class EditIdeaTest extends TestCase
     }
 
     /** @test */
-    public function editing_an_idea_works_when_user_has_authorization()
+    public function editing_an_idea_works_when_user_has_authorization(): void
     {
         $user = User::factory()->create();
 
@@ -93,7 +93,7 @@ class EditIdeaTest extends TestCase
     }
 
     /** @test */
-    public function editing_an_idea_does_not_work_when_user_does_not_have_authorization_because_it_is_not_their_idea()
+    public function user_can_not_edit_other_user_idea(): void
     {
         $randomUser = User::factory()->create();
         $ideaAuthor = User::factory()->create();
@@ -112,7 +112,7 @@ class EditIdeaTest extends TestCase
     }
 
     /** @test */
-    public function editing_an_idea_does_not_work_when_user_does_not_have_authorization_because_idea_was_created_over_an_hour_ago()
+    public function user_can_not_edit_an_idea_which_is_older_than_one_hour(): void
     {
         $user = User::factory()->create();
 
@@ -131,7 +131,7 @@ class EditIdeaTest extends TestCase
     }
 
     /** @test */
-    public function editing_an_idea_shows_on_menu_when_user_has_authorization()
+    public function editing_an_idea_shows_on_menu_when_user_has_authorization(): void
     {
         $user = User::factory()->create();
 
@@ -148,7 +148,7 @@ class EditIdeaTest extends TestCase
     }
 
     /** @test */
-    public function editing_an_idea_does_not_show_on_menu_when_user_does_not_have_authorization()
+    public function editing_an_idea_does_not_show_on_menu_when_user_does_not_have_authorization(): void
     {
         $user = User::factory()->create();
 

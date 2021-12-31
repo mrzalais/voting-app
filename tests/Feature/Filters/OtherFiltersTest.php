@@ -17,7 +17,7 @@ class OtherFiltersTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function top_voted_filter_works()
+    public function top_voted_filter_works(): void
     {
         $userA = User::factory()->create();
         $userB = User::factory()->create();
@@ -52,7 +52,7 @@ class OtherFiltersTest extends TestCase
     }
 
     /** @test */
-    public function my_ideas_filter_works_correctly_when_user_logged_in()
+    public function my_ideas_filter_works_correctly_when_user_logged_in(): void
     {
         $userA = User::factory()->create();
         $userB = User::factory()->create();
@@ -83,7 +83,7 @@ class OtherFiltersTest extends TestCase
     }
 
     /** @test */
-    public function my_ideas_filter_works_correctly_when_user_is_not_logged_in()
+    public function my_ideas_filter_works_correctly_when_user_is_not_logged_in(): void
     {
         Idea::factory()->count(3)->create();
 
@@ -93,7 +93,7 @@ class OtherFiltersTest extends TestCase
     }
 
     /** @test */
-    public function my_ideas_filter_works_correctly_with_categories_filter()
+    public function my_ideas_filter_works_correctly_with_categories_filter(): void
     {
         $user = User::factory()->create();
 
@@ -130,7 +130,7 @@ class OtherFiltersTest extends TestCase
     }
 
     /** @test */
-    public function no_filters_works_correctly()
+    public function no_filters_works_correctly(): void
     {
         Idea::factory()->create([
             'title' => 'First Idea',
@@ -154,7 +154,7 @@ class OtherFiltersTest extends TestCase
     }
 
     /** @test */
-    public function spam_ideas_filter_works()
+    public function spam_ideas_filter_works(): void
     {
         $admin = User::factory()->admin()->create();
 
@@ -189,7 +189,7 @@ class OtherFiltersTest extends TestCase
     }
 
     /** @test */
-    public function spam_comments_filter_works()
+    public function spam_comments_filter_works(): void
     {
         $admin = User::factory()->admin()->create();
 

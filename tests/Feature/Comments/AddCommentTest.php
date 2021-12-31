@@ -17,7 +17,7 @@ class AddCommentTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function add_comment_livewire_component_renders()
+    public function add_comment_livewire_component_renders(): void
     {
         $idea = Idea::factory()->create();
 
@@ -26,7 +26,7 @@ class AddCommentTest extends TestCase
     }
 
     /** @test */
-    public function add_comment_renders_when_user_is_logged_in()
+    public function add_comment_renders_when_user_is_logged_in(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
@@ -36,7 +36,7 @@ class AddCommentTest extends TestCase
     }
 
     /** @test */
-    public function add_comment_form_does_not_render_when_user_is_logged_out()
+    public function add_comment_form_does_not_render_when_user_is_logged_out(): void
     {
         $idea = Idea::factory()->create();
 
@@ -45,7 +45,7 @@ class AddCommentTest extends TestCase
     }
 
     /** @test */
-    public function add_comment_form_validation_works()
+    public function add_comment_form_validation_works(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
@@ -63,7 +63,7 @@ class AddCommentTest extends TestCase
     }
 
     /** @test */
-    public function add_comment_form_works()
+    public function add_comment_form_works(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();

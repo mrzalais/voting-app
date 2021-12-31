@@ -18,7 +18,7 @@ class NotifyAllVotersTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_sends_an_email_to_all_voters()
+    public function it_sends_an_email_to_all_voters(): void
     {
         $admin = User::factory()->create([
             'email' => 'jon@doe.com',
@@ -27,7 +27,7 @@ class NotifyAllVotersTest extends TestCase
         $nonAdmin = User::factory()->create([
             'email' => 'user@user.com',
         ]);
-        
+
         $idea = Idea::factory()->create();
 
         Vote::factory()->create([
@@ -39,11 +39,11 @@ class NotifyAllVotersTest extends TestCase
             'idea_id' => $idea->id,
             'user_id' => $nonAdmin->id,
         ]);
-        
+
         Mail::fake();
 
         NotifyAllVoters::dispatch($idea);
-        
+
         Mail::assertQueued(IdeaStatusUpdatedMailable::class, function($mail) {
             return $mail->hasTo('jon@doe.com')
                 && $mail->build()->subject === 'An idea you voted for has a new status';

@@ -17,7 +17,7 @@ class CommentNotificationsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function comment_notifications_livewire_component_renders_when_user_logged_in()
+    public function comment_notifications_livewire_component_renders_when_user_logged_in(): void
     {
         $user = User::factory()->create();
 
@@ -26,7 +26,7 @@ class CommentNotificationsTest extends TestCase
     }
 
     /** @test */
-    public function comment_notifications_livewire_component_does_not_render_when_user_not_logged_in()
+    public function comment_notifications_livewire_component_does_not_render_when_user_not_logged_in(): void
     {
 
         $this->get(route('idea.index'))
@@ -34,7 +34,7 @@ class CommentNotificationsTest extends TestCase
     }
 
     /** @test */
-    public function notifications_show_for_logged_in_user()
+    public function notifications_show_for_logged_in_user(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create([
@@ -64,7 +64,7 @@ class CommentNotificationsTest extends TestCase
     }
 
     /** @test */
-    public function notification_count_greater_than_threshold_shows_for_logged_in_user()
+    public function notification_count_greater_than_threshold_shows_for_logged_in_user(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create([
@@ -89,7 +89,7 @@ class CommentNotificationsTest extends TestCase
     }
 
     /** @test */
-    public function can_mark_all_notifications_as_read()
+    public function can_mark_all_notifications_as_read(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create([
@@ -120,7 +120,7 @@ class CommentNotificationsTest extends TestCase
     }
 
     /** @test */
-    public function can_mark_individual_notification_as_read()
+    public function can_mark_individual_notification_as_read(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create([
@@ -155,7 +155,7 @@ class CommentNotificationsTest extends TestCase
     }
 
     /** @test */
-    public function notification_idea_deleted_redirects_to_index_page()
+    public function notification_idea_deleted_redirects_to_index_page(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create([
@@ -180,7 +180,7 @@ class CommentNotificationsTest extends TestCase
     }
 
     /** @test */
-    public function notification_comment_deleted_redirects_to_index_page()
+    public function notification_comment_deleted_redirects_to_index_page(): void
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create([

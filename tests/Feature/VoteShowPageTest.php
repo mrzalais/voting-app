@@ -15,7 +15,7 @@ class VoteShowPageTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function show_page_contains_idea_show_livewire_component()
+    public function show_page_contains_idea_show_livewire_component(): void
     {
         $idea = Idea::factory()->create();
 
@@ -24,7 +24,7 @@ class VoteShowPageTest extends TestCase
     }
 
     /** @test */
-    public function show_page_correctly_receives_vote_count()
+    public function show_page_correctly_receives_vote_count(): void
     {
         $userA = User::factory()->create();
         $userB = User::factory()->create();
@@ -46,7 +46,7 @@ class VoteShowPageTest extends TestCase
     }
 
     /** @test */
-    public function vote_count_shows_correctly_on_show_page_livewire_component()
+    public function vote_count_shows_correctly_on_show_page_livewire_component(): void
     {
         $idea = Idea::factory()->create();
 
@@ -58,7 +58,7 @@ class VoteShowPageTest extends TestCase
     }
 
     /** @test */
-    public function user_who_is_logged_in_sees_voted_if_idea_already_voted_for()
+    public function user_who_is_logged_in_sees_voted_if_idea_already_voted_for(): void
     {
         $user = User::factory()->create();
 
@@ -79,7 +79,7 @@ class VoteShowPageTest extends TestCase
     }
 
     /** @test */
-    public function user_who_is_not_logged_in_is_redirected_to_login_page_when_trying_to_vote()
+    public function user_who_is_not_logged_in_is_redirected_to_login_page_when_trying_to_vote(): void
     {
         $idea = Idea::factory()->create();
 
@@ -92,7 +92,7 @@ class VoteShowPageTest extends TestCase
     }
 
     /** @test */
-    public function user_who_is_logged_in_can_vote_for_idea()
+    public function user_who_is_logged_in_can_vote_for_idea(): void
     {
         $user = User::factory()->create();
 
@@ -120,7 +120,7 @@ class VoteShowPageTest extends TestCase
     }
 
     /** @test */
-    public function user_who_is_logged_in_can_remove_vote_for_idea()
+    public function user_who_is_logged_in_can_remove_vote_for_idea(): void
     {
         $user = User::factory()->create();
 

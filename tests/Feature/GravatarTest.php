@@ -12,7 +12,7 @@ class GravatarTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function user_can_generate_gravatar_default_image_when_no_email_found_first_character_a()
+    public function user_can_generate_gravatar_default_image_when_no_email_found_first_character_a(): void
     {
         $user = User::factory()->create([
             'email' => 'afakeemail@fakeemail.com',
@@ -35,7 +35,7 @@ class GravatarTest extends TestCase
     }
 
     /** @test */
-    public function user_can_generate_gravatar_default_image_when_no_email_found_first_character_z()
+    public function user_can_generate_gravatar_default_image_when_no_email_found_first_character_z(): void
     {
         $user = User::factory()->create([
             'email' => 'zfakeemail@fakeemail.com',
@@ -54,7 +54,7 @@ class GravatarTest extends TestCase
     }
 
     /** @test */
-    public function user_can_generate_gravatar_defualt_image_when_no_email_found_first_character_0()
+    public function user_can_generate_gravatar_defualt_image_when_no_email_found_first_character_0(): void
     {
         $user = User::factory()->create([
             'email' => '0fakeemail@fakeemail.com',
@@ -63,7 +63,8 @@ class GravatarTest extends TestCase
         $gravatarUrl = $user->getAvatar();
 
         $this->assertEquals(
-            'https://www.gravatar.com/avatar/' . md5($user->email) . '?s=200&d=https://s3.amazonaws.com/laracasts/images/forum/avatars/default-avatar-27.png',
+            'https://www.gravatar.com/avatar/' . md5($user->email) .
+            '?s=200&d=https://s3.amazonaws.com/laracasts/images/forum/avatars/default-avatar-27.png',
             $gravatarUrl
         );
 
@@ -73,7 +74,7 @@ class GravatarTest extends TestCase
     }
 
     /** @test */
-    public function user_can_generate_gravatar_defualt_image_when_no_email_found_first_character_9()
+    public function user_can_generate_gravatar_defualt_image_when_no_email_found_first_character_9(): void
     {
         $user = User::factory()->create([
             'email' => '9fakeemail@fakeemail.com',
@@ -82,7 +83,8 @@ class GravatarTest extends TestCase
         $gravatarUrl = $user->getAvatar();
 
         $this->assertEquals(
-            'https://www.gravatar.com/avatar/' . md5($user->email) . '?s=200&d=https://s3.amazonaws.com/laracasts/images/forum/avatars/default-avatar-36.png',
+            'https://www.gravatar.com/avatar/' . md5($user->email) .
+            '?s=200&d=https://s3.amazonaws.com/laracasts/images/forum/avatars/default-avatar-36.png',
             $gravatarUrl
         );
 

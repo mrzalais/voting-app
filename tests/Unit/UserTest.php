@@ -11,7 +11,7 @@ class UserTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function can_check_if_user_is_an_admin()
+    public function can_check_if_user_is_an_admin(): void
     {
         $admin = User::factory()->make([
             'email' => 'jon@doe.com',
