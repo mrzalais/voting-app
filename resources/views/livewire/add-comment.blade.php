@@ -12,7 +12,7 @@
             firstComment.scrollIntoView({ behavior: 'smooth' })
         }
 
-{{--Adding Comment--}}
+            {{--Adding Comment--}}
         if (['commentWasAdded', 'statusWasUpdated'].includes(message.updateQueue[0].payload.event)
             && message.component.fingerprint.name === 'idea-comments') {
                 const lastComment = document.querySelector('.comment-container:last-child')
@@ -24,7 +24,7 @@
         }
     })
 
-@if (session('scrollToComment'))
+        @if (session('scrollToComment'))
         const commentToScrollTo = document.querySelector('#comment-{{ session('scrollToComment') }}')
                             commentToScrollTo.scrollIntoView({ behavior: 'smooth' })
                             commentToScrollTo.classList.add('bg-green-50')

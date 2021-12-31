@@ -163,7 +163,6 @@ class CommentNotificationsTest extends TestCase
         ]);
 
         $commentingUserA = User::factory()->create();
-        $commentingUserB = User::factory()->create();
 
         Livewire::actingAs($commentingUserA)
             ->test(AddComment::class, ['idea' => $idea])
