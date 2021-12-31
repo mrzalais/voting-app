@@ -7,24 +7,24 @@
 
         Livewire.hook('message.processed', (message, component) => {
             {{--Pagination--}}
-            if (['gotoPage', 'previousPage', 'nextPage'].includes(message.updateQueue[0].method)) {
-                const firstComment = document.querySelector('.comment-container:first-child')
-                firstComment.scrollIntoView({ behavior: 'smooth' })
-            }
+        if (['gotoPage', 'previousPage', 'nextPage'].includes(message.updateQueue[0].method)) {
+            const firstComment = document.querySelector('.comment-container:first-child')
+            firstComment.scrollIntoView({ behavior: 'smooth' })
+        }
 
-            {{--Adding Comment--}}
-            if (['commentWasAdded', 'statusWasUpdated'].includes(message.updateQueue[0].payload.event)
-                && message.component.fingerprint.name === 'idea-comments') {
-                    const lastComment = document.querySelector('.comment-container:last-child')
-                    lastComment.scrollIntoView({ behavior: 'smooth' })
-                    lastComment.classList.add('bg-green-50')
-                    setTimeout(() => {
-                        lastComment.classList.remove('bg-green-50')
-                    }, 5000)
-            }
-        })
+{{--Adding Comment--}}
+        if (['commentWasAdded', 'statusWasUpdated'].includes(message.updateQueue[0].payload.event)
+            && message.component.fingerprint.name === 'idea-comments') {
+                const lastComment = document.querySelector('.comment-container:last-child')
+                lastComment.scrollIntoView({ behavior: 'smooth' })
+                lastComment.classList.add('bg-green-50')
+                setTimeout(() => {
+                    lastComment.classList.remove('bg-green-50')
+                }, 5000)
+        }
+    })
 
-        @if (session('scrollToComment'))
+@if (session('scrollToComment'))
         const commentToScrollTo = document.querySelector('#comment-{{ session('scrollToComment') }}')
                             commentToScrollTo.scrollIntoView({ behavior: 'smooth' })
                             commentToScrollTo.classList.add('bg-green-50')
@@ -32,7 +32,7 @@
                                 commentToScrollTo.classList.remove('bg-green-50')
                             }, 5000)
         @endif
-    "
+        "
     class="relative"
 >
     <button
@@ -91,14 +91,19 @@
             <div class="px-4 py-6">
                 <p class="font-normal">Please login or create an account to post a comment.</p>
                 <div class="flex items-center space-x-3 mt-8">
-                    <a href="{{ route('login') }}" type="submit" class="w-1/2 h-11 text-xs text-center bg-blue
-                        font-semibold rounded-xl hover:bg-blue-hover transition duration-150 ease-in px-6 py-3"
+                    <a
+                        wire:click.prevent="redirectToLogin"
+                        type="submit"
+                        class="w-1/2 h-11 text-xs text-center bg-blue font-semibold rounded-xl hover:bg-blue-hover
+                        transition duration-150 ease-in px-6 py-3"
                     >
                         Login
                     </a>
-                    <a href="{{ route('register') }}" class="flex items-center justify-center w-1/2 h-11 text-xs
-                        bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400
-                        transition duration-150 ease-in px-6 py-3"
+                    <a
+                        wire:click.prevent="redirectToRegister"
+                        href="{{ route('register') }}"
+                        class="flex items-center justify-center w-1/2 h-11 text-xs bg-gray-200 font-semibold rounded-xl
+                        border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3"
                     >
                         Sign Up
                     </a>
