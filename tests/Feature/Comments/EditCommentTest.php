@@ -5,13 +5,12 @@ namespace Tests\Feature\Comments;
 use App\Http\Livewire\EditComment;
 use App\Http\Livewire\IdeaComment;
 use App\Models\Comment;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 use App\Models\Idea;
 use App\Models\User;
 use Livewire\Livewire;
-use App\Http\Livewire\EditIdea;
-use App\Http\Livewire\IdeaShow;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class EditCommentTest extends TestCase
@@ -26,7 +25,7 @@ class EditCommentTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
+        /** @var Authenticatable $user */
         $this->actingAs($user)
             ->get(route('idea.show', $idea))
             ->assertSeeLivewire('edit-comment');

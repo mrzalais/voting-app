@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Tests\TestCase;
 use App\Models\Idea;
 use App\Models\User;
@@ -22,7 +23,7 @@ class SpamManagementTest extends TestCase
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
 
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
+        /** @var Authenticatable $user */
         $this->actingAs($user)
             ->get(route('idea.show', $idea))
             ->assertSeeLivewire('mark-idea-as-spam');
@@ -43,7 +44,7 @@ class SpamManagementTest extends TestCase
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
 
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
+        /** @var Authenticatable $user */
         Livewire::actingAs($user)
             ->test(MarkIdeaAsSpam::class, [
                 'idea' => $idea,
@@ -59,7 +60,7 @@ class SpamManagementTest extends TestCase
     {
         $idea = Idea::factory()->create();
 
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
+        /** @var Authenticatable $user */
         Livewire::test(MarkIdeaAsSpam::class, [
             'idea' => $idea,
         ])

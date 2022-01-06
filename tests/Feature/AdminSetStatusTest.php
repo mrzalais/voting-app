@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Tests\TestCase;
 use App\Models\Idea;
 use App\Models\User;
@@ -19,7 +20,7 @@ class AdminSetStatusTest extends TestCase
     /** @test */
     public function show_page_contains_set_status_livewire_component_when_user_is_admin(): void
     {
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $admin */
+        /** @var Authenticatable $admin */
         $admin = User::factory()->admin()->create();
 
         $idea = Idea::factory()->create();
@@ -32,7 +33,7 @@ class AdminSetStatusTest extends TestCase
     /** @test */
     public function show_page_does_not_contain_set_status_livewire_component_when_user_is_not_an_admin(): void
     {
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $nonAdmin */
+        /** @var Authenticatable $nonAdmin */
         $nonAdmin = User::factory()->create();
 
         $idea = Idea::factory()->create();
@@ -45,7 +46,7 @@ class AdminSetStatusTest extends TestCase
     /** @test */
     public function initial_status_is_set_correctly(): void
     {
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $admin */
+        /** @var Authenticatable $admin */
         $admin = User::factory()->admin()->create();
 
         $status = Status::factory()->create();
@@ -64,7 +65,7 @@ class AdminSetStatusTest extends TestCase
     /** @test */
     public function can_set_status_correctly_no_comment(): void
     {
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $admin */
+        /** @var Authenticatable $admin */
         $admin = User::factory()->admin()->create();
 
         $statusOpen = Status::factory()->create(['name' => 'Open']);
@@ -96,7 +97,7 @@ class AdminSetStatusTest extends TestCase
     /** @test */
     public function can_set_status_correctly_with_comment(): void
     {
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $admin */
+        /** @var Authenticatable $admin */
         $admin = User::factory()->admin()->create();
 
         $statusOpen = Status::factory()->create(['name' => 'Open']);
@@ -129,7 +130,7 @@ class AdminSetStatusTest extends TestCase
     /** @test */
     public function can_set_status_correctly_while_notifying_all_voters(): void
     {
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $admin */
+        /** @var Authenticatable $admin */
         $admin = User::factory()->admin()->create();
 
         $statusOpen = Status::factory()->create(['name' => 'Open']);

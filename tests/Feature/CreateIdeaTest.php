@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Status;
@@ -27,7 +28,7 @@ class CreateIdeaTest extends TestCase
     /** @test */
     public function create_idea_form_does_show_when_logged_in(): void
     {
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
+        /** @var Authenticatable $user */
         $user = User::factory()->create();
         $response = $this->actingAs($user)->get(route('idea.index'));
 
@@ -39,7 +40,7 @@ class CreateIdeaTest extends TestCase
     /** @test */
     public function main_page_contains_create_idea_livewire_component(): void
     {
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
+        /** @var Authenticatable $user */
         $user = User::factory()->create();
         $this->actingAs($user)
             ->get(route('idea.index'))
@@ -62,7 +63,7 @@ class CreateIdeaTest extends TestCase
     /** @test */
     public function creating_an_idea_works_correctly(): void
     {
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
+        /** @var Authenticatable $user */
         $user = User::factory()->create();
 
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
@@ -95,7 +96,7 @@ class CreateIdeaTest extends TestCase
     /** @test */
     public function creating_two_ideas_with_same_title_still_works_but_has_different_slugs(): void
     {
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
+        /** @var Authenticatable $user */
         $user = User::factory()->create();
 
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);

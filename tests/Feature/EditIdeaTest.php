@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 use App\Models\Idea;
@@ -24,7 +25,7 @@ class EditIdeaTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
+        /** @var Authenticatable $user */
         $this->actingAs($user)
             ->get(route('idea.show', $idea))
             ->assertSeeLivewire('edit-idea');
@@ -36,7 +37,7 @@ class EditIdeaTest extends TestCase
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
 
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
+        /** @var Authenticatable $user */
         $this->actingAs($user)
             ->get(route('idea.show', $idea))
             ->assertDontSeeLivewire('edit-idea');

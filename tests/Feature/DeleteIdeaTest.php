@@ -2,12 +2,12 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Tests\TestCase;
 use App\Models\Idea;
 use App\Models\User;
 use App\Models\Vote;
 use Livewire\Livewire;
-use Illuminate\Http\Response;
 use App\Http\Livewire\IdeaShow;
 use App\Http\Livewire\DeleteIdea;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -24,7 +24,7 @@ class DeleteIdeaTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
+        /** @var Authenticatable $user */
         $this->actingAs($user)
             ->get(route('idea.show', $idea))
             ->assertSeeLivewire('delete-idea');
@@ -36,7 +36,7 @@ class DeleteIdeaTest extends TestCase
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
 
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
+        /** @var Authenticatable $user */
         $this->actingAs($user)
             ->get(route('idea.show', $idea))
             ->assertDontSeeLivewire('delete-idea');
